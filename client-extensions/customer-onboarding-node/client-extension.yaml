@@ -1,0 +1,35 @@
+assemble:
+    - include:
+          - "**/*.js"
+          - package.json
+customer-onboarding-node-oauth-application-headless-server:
+    .serviceAddress: customeronboardingnode:3001
+    .serviceScheme: http
+    name: Customer Onboarding Node OAuth Application Headless Server
+    scopes:
+        - c_co01customerregistration.everything
+        - Liferay.Headless.Admin.User.everything
+    type: oAuthApplicationHeadlessServer
+customer-onboarding-node-oauth-application-user-agent:
+    .serviceAddress: customeronboardingnode:3001
+    .serviceScheme: http
+    name: Customer Onboarding Node OAuth Application User Agent
+    scopes:
+        - Liferay.Headless.Admin.Workflow.everything
+        - Liferay.Headless.Admin.User.everything.read
+    type: oAuthApplicationUserAgent
+customer-onbooarding-node-object-action:
+    name: Customer Onboarding Node Object Action
+    oAuth2ApplicationExternalReferenceCode: customer-onboarding-node-oauth-application-user-agent
+    resourcePath: /customer-onboarding
+    type: objectAction
+customer-cleanup-node-object-action:
+    name: Customer Cleanup Node Object Action
+    oAuth2ApplicationExternalReferenceCode: customer-onboarding-node-oauth-application-user-agent
+    resourcePath: /customer-cleanup
+    type: objectAction
+connectvity-test-node-object-action:
+    name: Connectivity Test Node Object Action
+    oAuth2ApplicationExternalReferenceCode: customer-onboarding-node-oauth-application-user-agent
+    resourcePath: /connectivity-test
+    type: objectAction

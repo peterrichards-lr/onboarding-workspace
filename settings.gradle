@@ -1,10 +1,20 @@
 buildscript {
 	dependencies {
-		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.workspace", version: "10.1.7"
+		// *** Needed for M1 Macbook - remove if not needed ***
+		classpath group: "com.github.docker-java", name: "docker-java-core", version: "3.3.1"
+		classpath group: "com.github.docker-java", name: "docker-java", version: "3.3.1"
+		classpath group: "com.github.docker-java", name: "docker-java-transport-httpclient5", version: "3.3.1"
+		// *** END ***
+		classpath group: "biz.aQute.bnd", name: "biz.aQute.bnd.gradle", version: "5.3.0"
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.workspace", version: "12.0.0"
 	}
 
 	repositories {
 		mavenLocal()
+
+		maven {
+			url new File(rootProject.projectDir, "../../.m2-tmp")
+		}
 
 		maven {
 			url "https://repository-cdn.liferay.com/nexus/content/groups/public"

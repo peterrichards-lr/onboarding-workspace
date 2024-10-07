@@ -1,0 +1,27 @@
+{
+   "configuration": {
+     "className": "com.liferay.headless.admin.user.dto.v1_0.Role",
+     "parameters": {
+       "containsHeaders": "true",
+       "createStrategy": "UPSERT",
+       "onErrorFail": "false"
+     },
+     "taskItemDelegateName": "DEFAULT"
+   },
+   "items": [
+     {
+       "availableLanguages": [
+         "en-US"
+       ],
+       "description_i18n": {
+         "en-US": "People with this role are responsible for the final review and approval of a customer registration."
+       },
+       "externalReferenceCode": "CO01_REGISTRATION_REVIEWER",
+       "name": "CO01 Registration Reviewer",
+       "name_i18n": {
+         "en-US": "CO01 Registration Reviewer"
+       },
+       "roleType": "regular"
+     }
+   ]
+ }

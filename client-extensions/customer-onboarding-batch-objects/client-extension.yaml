@@ -1,0 +1,18 @@
+assemble:
+  - from: batch
+    into: batch
+customer-onboarding-batch-objects:
+  name: Customer Onboarding Batch Objects
+  oAuthApplicationHeadlessServer: customer-onboarding-batch-objects-oauth-application-headless-server
+  type: batch
+customer-onboarding-batch-objects-oauth-application-headless-server:
+  .serviceAddress: localhost:8080
+  .serviceScheme: http
+  name: Customer Onboarding Batch Objects OAuth Application Headless Server
+  scopes:
+    - Liferay.Headless.Admin.List.Type.everything
+    - Liferay.Headless.Admin.User.everything
+    - Liferay.Headless.Batch.Engine.everything
+    - Liferay.Notification.REST.everything
+    - Liferay.Object.Admin.REST.everything
+  type: oAuthApplicationHeadlessServer

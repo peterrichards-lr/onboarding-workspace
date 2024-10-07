@@ -1,0 +1,171 @@
+{
+  "configuration": {
+    "className": "com.liferay.headless.admin.list.type.dto.v1_0.ListTypeDefinition",
+    "parameters": {
+      "containsHeaders": "true",
+      "createStrategy": "UPSERT",
+      "onErrorFail": "false",
+      "taskItemDelegateName": "DEFAULT",
+      "updateStrategy": "UPDATE"
+    }
+  },
+  "items": [
+    {
+      "system": false,
+      "name_i18n": { "en-US": "CO01 Customer Registration Status" },
+      "name": "CO01 Customer Registration Status",
+      "listTypeEntries": [
+        {
+          "name_i18n": { "en-US": "Received" },
+          "name": "Received",
+          "type": "",
+          "key": "received",
+          "externalReferenceCode": "RECEIVED"
+        },
+        {
+          "name_i18n": { "en-US": "Approved" },
+          "name": "Approved",
+          "type": "",
+          "key": "approved",
+          "externalReferenceCode": "APPROVED"
+        },
+        {
+          "name_i18n": { "en-US": "Rejected" },
+          "name": "Rejected",
+          "type": "",
+          "key": "rejected",
+          "externalReferenceCode": "REJECTED"
+        },
+        {
+          "name_i18n": { "en-US": "Successful" },
+          "name": "Successful",
+          "type": "",
+          "key": "successful",
+          "externalReferenceCode": "SUCCESSFUL"
+        },
+        {
+          "name_i18n": { "en-US": "Unsuccessful" },
+          "name": "Unsuccessful",
+          "type": "",
+          "key": "unsuccessful",
+          "externalReferenceCode": "UNSUCCESSFUL"
+        },
+        {
+          "name_i18n": { "en-US": "Pending" },
+          "name": "Pending",
+          "type": "",
+          "key": "pending",
+          "externalReferenceCode": "PENDING"
+        }
+      ],
+      "externalReferenceCode": "CO01_CUSTOMER_REGISTRATION_STATUS"
+    },
+    {
+      "system": false,
+      "name_i18n": { "en-US": "CO01 Title / Prefix" },
+      "name": "CO01 Title / Prefix",
+      "listTypeEntries": [
+        {
+          "name_i18n": { "en-US": "Mr" },
+          "name": "Mr",
+          "type": "",
+          "key": "mr",
+          "externalReferenceCode": "MR"
+        },
+        {
+          "name_i18n": { "en-US": "Mrs" },
+          "name": "Mrs",
+          "type": "",
+          "key": "mrs",
+          "externalReferenceCode": "MRS"
+        },
+        {
+          "name_i18n": { "en-US": "Miss" },
+          "name": "Miss",
+          "type": "",
+          "key": "miss",
+          "externalReferenceCode": "MISS"
+        },
+        {
+          "name_i18n": { "en-US": "Ms" },
+          "name": "Ms",
+          "type": "",
+          "key": "ms",
+          "externalReferenceCode": "MS"
+        },
+        {
+          "name_i18n": { "en-US": "Mx" },
+          "name": "Mx",
+          "type": "",
+          "key": "mx",
+          "externalReferenceCode": "MX"
+        },
+        {
+          "name_i18n": { "en-US": "Dr" },
+          "name": "Dr",
+          "type": "",
+          "key": "dr",
+          "externalReferenceCode": "DR"
+        },
+        {
+          "name_i18n": { "en-US": "Other" },
+          "name": "Other",
+          "type": "",
+          "key": "other",
+          "externalReferenceCode": "OTHER"
+        }
+      ],
+      "externalReferenceCode": "CO01_TITLE_PREFIX"
+    },
+    {
+      "system": false,
+      "name_i18n": { "en-US": "CO01 Job Role" },
+      "name": "CO01 Job Role",
+      "listTypeEntries": [
+        {
+          "name_i18n": { "en-US": "Buyer" },
+          "name": "Buyer",
+          "type": "",
+          "key": "buyer",
+          "externalReferenceCode": "BUYER"
+        },
+        {
+          "name_i18n": { "en-US": "Manager" },
+          "name": "Manager",
+          "type": "",
+          "key": "manager",
+          "externalReferenceCode": "MANAGER"
+        },
+        {
+          "name_i18n": { "en-US": "Programme Manager" },
+          "name": "Programme Manager",
+          "type": "",
+          "key": "programmeManager",
+          "externalReferenceCode": "PROGRAMME_MANAGER"
+        },
+        {
+          "name_i18n": { "en-US": "C Level" },
+          "name": "C Level",
+          "type": "",
+          "key": "cLevel",
+          "externalReferenceCode": "C_LEVEL"
+        },
+        {
+          "name_i18n": { "en-US": "Director" },
+          "name": "Director",
+          "type": "",
+          "key": "director",
+          "externalReferenceCode": "DIRECTOR"
+        },
+        {
+          "name_i18n": { "en-US": "Other" },
+          "name": "Other",
+          "type": "",
+          "key": "other",
+          "externalReferenceCode": "OTHER"
+        }
+      ],
+      "externalReferenceCode": "CO01_JOB_ROLE"
+    }    
+  ]
+}

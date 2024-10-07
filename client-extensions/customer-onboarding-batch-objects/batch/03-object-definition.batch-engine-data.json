@@ -1,0 +1,761 @@
+{
+  "configuration": {
+    "className": "com.liferay.object.admin.rest.dto.v1_0.ObjectDefinition",
+    "parameters": {
+      "containsHeaders": "true",
+      "createStrategy": "UPSERT",
+      "onErrorFail": "false",
+      "updateStrategy": "UPDATE"
+    },
+    "taskItemDelegateName": "DEFAULT"
+  },
+  "items": [
+    {
+      "active": true,
+      "defaultLanguageId": "en_US",
+      "enableCategorization": true,
+      "enableComments": false,
+      "enableLocalization": false,
+      "enableObjectEntryDraft": false,
+      "enableObjectEntryHistory": true,
+      "externalReferenceCode": "CO01_CUSTOMER_REGISTRATION",
+      "label": {
+        "en_US": "CO01 Customer Registration"
+      },
+      "modifiable": true,
+      "name": "CO01CustomerRegistration",
+      "objectActions": [
+        {
+          "active": true,
+          "conditionExpression": "registrationStatus == 'received'",
+          "description": "Informs the reviewers of pending customer registrations",
+          "errorMessage": {},
+          "label": {
+            "en_US": "Notify reviewers that registration has been received"
+          },
+          "name": "notifyReviewers",
+          "objectActionExecutorKey": "notification",
+          "objectActionTriggerKey": "onAfterAdd",
+          "parameters": {
+            "notificationTemplateExternalReferenceCode": "CO01_NEW_CUSTOMER_REGISTRATION_RECEIVED_REVIEWER",
+            "type": "userNotification"
+          },
+          "status": {
+            "code": 0,
+            "label": "never-ran",
+            "label_i18n": "Never Ran"
+          }
+        },
+        {
+          "active": true,
+          "conditionExpression": "registrationStatus == 'rejected'",
+          "description": "Informs a customer of an rejected registration",
+          "errorMessage": {},
+          "label": {
+            "en_US": "Notify customer that registration has been rejected"
+          },
+          "name": "notifyCustomerOfUnsuccessfulRegistration",
+          "objectActionExecutorKey": "notification",
+          "objectActionTriggerKey": "onAfterUpdate",
+          "parameters": {
+            "notificationTemplateExternalReferenceCode": "CO01_CUSTOMER_REGISTRATION_IS_REJECTED",
+            "type": "email"
+          },
+          "status": {
+            "code": 0,
+            "label": "never-ran",
+            "label_i18n": "Never Ran"
+          }
+        },
+        {
+          "active": true,
+          "conditionExpression": "registrationStatus == 'received'",
+          "description": "Informed a customer that the registration has been received",
+          "errorMessage": {},
+          "label": {
+            "en_US": "Notify customer that registration has been received"
+          },
+          "name": "notifyCustomerOfReceivedRegistration",
+          "objectActionExecutorKey": "notification",
+          "objectActionTriggerKey": "onAfterAdd",
+          "parameters": {
+            "notificationTemplateExternalReferenceCode": "CO01_NEW_CUSTOMER_REGISTRATION_RECEIVED_CUSTOMER",
+            "type": "email"
+          },
+          "status": {
+            "code": 0,
+            "label": "never-ran",
+            "label_i18n": "Never Ran"
+          }
+        },
+        {
+          "active": true,
+          "conditionExpression": "registrationStatus == 'approved'",
+          "description": "This action creates the relevant system entities for the customer account",
+          "errorMessage": {},
+          "label": {
+            "en_US": "Create customer entities"
+          },
+          "name": "createCustomerEntities",
+          "objectActionExecutorKey": "function#customer-onbooarding-node-object-action",
+          "objectActionTriggerKey": "onAfterUpdate",
+          "parameters": {},
+          "status": {
+            "code": 0,
+            "label": "never-ran",
+            "label_i18n": "Never Ran"
+          }
+        },
+        {
+          "active": true,
+          "conditionExpression": "registrationStatus == 'unsuccessful'",
+          "description": "Informs the administrators of the failure",
+          "errorMessage": {},
+          "label": {
+            "en_US": "Notify administrators that the create customer entities action failed"
+          },
+          "name": "notifyAdministratorsFailed",
+          "objectActionExecutorKey": "notification",
+          "objectActionTriggerKey": "onAfterUpdate",
+          "parameters": {
+            "notificationTemplateExternalReferenceCode": "CO01_NOTIFY_ADMINISTRATORS_THAT_THE_CREATE_ENTITIES_PROCESS_HAS_FAILED",
+            "type": "userNotification"
+          },
+          "status": {
+            "code": 0,
+            "label": "never-ran",
+            "label_i18n": "Never Ran"
+          }
+        },
+        {
+          "active": true,
+          "conditionExpression": "",
+          "description": "Clean up the customer entities for this registration",
+          "errorMessage": {
+            "en_US": "Unable to clean up"
+          },
+          "label": {
+            "en_US": "Clean entities"
+          },
+          "name": "clean",
+          "objectActionExecutorKey": "function#customer-cleanup-node-object-action",
+          "objectActionTriggerKey": "standalone",
+          "parameters": {},
+          "status": {
+            "code": 0,
+            "label": "never-ran",
+            "label_i18n": "Never Ran"
+          }
+        },
+        {
+          "active": true,
+          "conditionExpression": "",
+          "description": "Tests that the client extension can be called",
+          "errorMessage": {
+            "en_US": "Unable to connect"
+          },
+          "label": {
+            "en_US": "Test connectivity"
+          },
+          "name": "testConnectivity",
+          "objectActionExecutorKey": "function#connectvity-test-node-object-action",
+          "objectActionTriggerKey": "standalone",
+          "parameters": {},
+          "status": {
+            "code": 0,
+            "label": "never-ran",
+            "label_i18n": "Never Ran"
+          }
+        }
+      ],
+      "objectFields": [
+        {
+          "businessType": "Picklist",
+          "DBType": "String",
+          "indexed": true,
+          "indexedAsKeyword": false,
+          "indexedLanguageId": "en_US",
+          "label": {
+            "en_US": "Title / Prefix"
+          },
+          "listTypeDefinitionExternalReferenceCode": "CO01_TITLE_PREFIX",
+          "localized": false,
+          "name": "titlePrefix",
+          "objectFieldSettings": [],
+          "readOnly": "false",
+          "readOnlyConditionExpression": "",
+          "required": true,
+          "state": false,
+          "type": "String",
+          "unique": false
+        },
+        {
+          "businessType": "Text",
+          "DBType": "String",
+          "indexed": true,
+          "indexedAsKeyword": false,
+          "indexedLanguageId": "en_US",
+          "label": {
+            "en_US": "Other Title"
+          },
+          "localized": false,
+          "name": "otherTitle",
+          "objectFieldSettings": [],
+          "readOnly": "false",
+          "readOnlyConditionExpression": "",
+          "required": false,
+          "state": false,
+          "type": "String",
+          "unique": false
+        },
+        {
+          "businessType": "Text",
+          "DBType": "String",
+          "indexed": true,
+          "indexedAsKeyword": false,
+          "indexedLanguageId": "en_US",
+          "label": {
+            "en_US": "Forename"
+          },
+          "localized": false,
+          "name": "forename",
+          "objectFieldSettings": [],
+          "readOnly": "false",
+          "readOnlyConditionExpression": "",
+          "required": true,
+          "state": false,
+          "type": "String",
+          "unique": false
+        },
+        {
+          "businessType": "Text",
+          "DBType": "String",
+          "indexed": true,
+          "indexedAsKeyword": false,
+          "indexedLanguageId": "en_US",
+          "label": {
+            "en_US": "Surname"
+          },
+          "localized": false,
+          "name": "surname",
+          "objectFieldSettings": [],
+          "readOnly": "false",
+          "readOnlyConditionExpression": "",
+          "required": true,
+          "state": false,
+          "type": "String",
+          "unique": false
+        },
+        {
+          "businessType": "Text",
+          "DBType": "String",
+          "indexed": true,
+          "indexedAsKeyword": false,
+          "indexedLanguageId": "en_US",
+          "label": {
+            "en_US": "Email Address"
+          },
+          "localized": false,
+          "name": "emailAddress",
+          "objectFieldSettings": [],
+          "readOnly": "false",
+          "readOnlyConditionExpression": "",
+          "required": true,
+          "state": false,
+          "type": "String",
+          "unique": false
+        },
+        {
+          "businessType": "Text",
+          "DBType": "String",
+          "indexed": true,
+          "indexedAsKeyword": false,
+          "indexedLanguageId": "en_US",
+          "label": {
+            "en_US": "Phone Number"
+          },
+          "localized": false,
+          "name": "phoneNumber",
+          "objectFieldSettings": [],
+          "readOnly": "false",
+          "readOnlyConditionExpression": "",
+          "required": false,
+          "state": false,
+          "type": "String",
+          "unique": false
+        },
+        {
+          "businessType": "Text",
+          "DBType": "String",
+          "indexed": true,
+          "indexedAsKeyword": false,
+          "indexedLanguageId": "en_US",
+          "label": {
+            "en_US": "Job Title"
+          },
+          "localized": false,
+          "name": "jobTitle",
+          "objectFieldSettings": [],
+          "readOnly": "false",
+          "readOnlyConditionExpression": "",
+          "required": false,
+          "state": false,
+          "type": "String",
+          "unique": false
+        },
+        {
+          "businessType": "Picklist",
+          "DBType": "String",
+          "indexed": true,
+          "indexedAsKeyword": false,
+          "indexedLanguageId": "en_US",
+          "label": {
+            "en_US": "Job Role"
+          },
+          "listTypeDefinitionExternalReferenceCode": "CO01_JOB_ROLE",
+          "localized": false,
+          "name": "jobRole",
+          "objectFieldSettings": [],
+          "readOnly": "false",
+          "readOnlyConditionExpression": "",
+          "required": true,
+          "state": false,
+          "system": false,
+          "type": "String",
+          "unique": false
+        },
+        {
+          "businessType": "Text",
+          "DBType": "String",
+          "indexed": true,
+          "indexedAsKeyword": false,
+          "indexedLanguageId": "en_US",
+          "label": {
+            "en_US": "Company Name"
+          },
+          "localized": false,
+          "name": "companyName",
+          "objectFieldSettings": [],
+          "readOnly": "false",
+          "readOnlyConditionExpression": "",
+          "required": true,
+          "state": false,
+          "system": false,
+          "type": "String",
+          "unique": false
+        },
+        {
+          "businessType": "Text",
+          "DBType": "String",
+          "indexed": true,
+          "indexedAsKeyword": false,
+          "indexedLanguageId": "en_US",
+          "label": {
+            "en_US": "Company Number"
+          },
+          "localized": false,
+          "name": "companyNumber",
+          "objectFieldSettings": [],
+          "readOnly": "false",
+          "readOnlyConditionExpression": "",
+          "required": false,
+          "state": false,
+          "system": false,
+          "type": "String",
+          "unique": false
+        },
+        {
+          "businessType": "Picklist",
+          "DBType": "String",
+          "defaultValue": "received",
+          "indexed": true,
+          "indexedAsKeyword": false,
+          "indexedLanguageId": "en_US",
+          "label": {
+            "en_US": "Registration Status"
+          },
+          "listTypeDefinitionExternalReferenceCode": "CO01_CUSTOMER_REGISTRATION_STATUS",
+          "localized": false,
+          "name": "registrationStatus",
+          "objectFieldSettings": [
+            {
+              "name": "stateFlow",
+              "value": {
+                "objectStates": [
+                  {
+                    "key": "received",
+                    "objectStateTransitions": [
+                      {
+                        "key": "approved"
+                      },
+                      {
+                        "key": "rejected"
+                      },
+                      {
+                        "key": "pending"
+                      }
+                    ]
+                  },
+                  {
+                    "key": "approved",
+                    "objectStateTransitions": [
+                      {
+                        "key": "successful"
+                      },
+                      {
+                        "key": "unsuccessful"
+                      }
+                    ]
+                  },
+                  {
+                    "key": "rejected",
+                    "objectStateTransitions": []
+                  },
+                  {
+                    "key": "successful",
+                    "objectStateTransitions": []
+                  },
+                  {
+                    "key": "unsuccessful",
+                    "objectStateTransitions": []
+                  },
+                  {
+                    "key": "pending",
+                    "objectStateTransitions": [
+                      {
+                        "key": "approved"
+                      },
+                      {
+                        "key": "rejected"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "defaultValueType",
+              "value": "inputAsValue"
+            },
+            {
+              "name": "defaultValue",
+              "value": "received"
+            }
+          ],
+          "readOnly": "false",
+          "readOnlyConditionExpression": "",
+          "required": true,
+          "state": true,
+          "system": false,
+          "type": "String",
+          "unique": false
+        }
+      ],
+      "objectFolderExternalReferenceCode": "CO01_ONBOARDING",
+      "objectLayouts": [
+        {
+          "defaultObjectLayout": true,
+          "name": {
+            "en_US": "Default"
+          },
+          "objectDefinitionExternalReferenceCode": "8aabc67c-4255-3327-acf2-6e79277cf10b",
+          "objectLayoutTabs": [
+            {
+              "name": {
+                "en_US": "Customer Registration"
+              },
+              "objectLayoutBoxes": [
+                {
+                  "collapsable": false,
+                  "name": {
+                    "en_US": "Your details"
+                  },
+                  "objectLayoutRows": [
+                    {
+                      "objectLayoutColumns": [
+                        {
+                          "objectFieldName": "titlePrefix",
+                          "priority": 0,
+                          "size": 6
+                        },
+                        {
+                          "objectFieldName": "otherTitle",
+                          "priority": 0,
+                          "size": 6
+                        }
+                      ],
+                      "priority": 0
+                    },
+                    {
+                      "objectLayoutColumns": [
+                        {
+                          "objectFieldName": "forename",
+                          "priority": 0,
+                          "size": 6
+                        },
+                        {
+                          "objectFieldName": "surname",
+                          "priority": 0,
+                          "size": 6
+                        }
+                      ],
+                      "priority": 0
+                    },
+                    {
+                      "objectLayoutColumns": [
+                        {
+                          "objectFieldName": "emailAddress",
+                          "priority": 0,
+                          "size": 6
+                        },
+                        {
+                          "objectFieldName": "phoneNumber",
+                          "priority": 0,
+                          "size": 6
+                        }
+                      ],
+                      "priority": 0
+                    }
+                  ],
+                  "priority": 0,
+                  "type": "regular"
+                },
+                {
+                  "collapsable": false,
+                  "name": {
+                    "en_US": "Your company"
+                  },
+                  "objectLayoutRows": [
+                    {
+                      "objectLayoutColumns": [
+                        {
+                          "objectFieldName": "jobTitle",
+                          "priority": 0,
+                          "size": 6
+                        },
+                        {
+                          "objectFieldName": "companyName",
+                          "priority": 0,
+                          "size": 6
+                        }
+                      ],
+                      "priority": 0
+                    },
+                    {
+                      "objectLayoutColumns": [
+                        {
+                          "objectFieldName": "jobRole",
+                          "priority": 0,
+                          "size": 6
+                        },
+                        {
+                          "objectFieldName": "companyNumber",
+                          "priority": 0,
+                          "size": 6
+                        }
+                      ],
+                      "priority": 0
+                    }
+                  ],
+                  "priority": 0,
+                  "type": "regular"
+                },
+                {
+                  "collapsable": false,
+                  "name": {
+                    "en_US": "Transaction"
+                  },
+                  "objectLayoutRows": [
+                    {
+                      "objectLayoutColumns": [
+                        {
+                          "objectFieldName": "registrationStatus",
+                          "priority": 0,
+                          "size": 12
+                        }
+                      ],
+                      "priority": 0
+                    }
+                  ],
+                  "priority": 0,
+                  "type": "regular"
+                }
+              ],
+              "priority": 0
+            }
+          ]
+        }
+      ],
+      "objectRelationships": [],
+      "objectValidationRules": [
+        {
+          "active": true,
+          "engine": "ddm",
+          "engineLabel": "Expression Builder",
+          "errorLabel": {
+            "en_US": "Please provide your prefix / title"
+          },
+          "name": {
+            "en_US": "Validate Title"
+          },
+          "objectDefinitionExternalReferenceCode": "CO01_CUSTOMER_REGISTRATION",
+          "outputType": "fullValidation",
+          "script": "((titlePrefix == 'other' AND otherTitle != '') OR (titlePrefix != 'other'))"
+        },
+        {
+          "active": true,
+          "engine": "ddm",
+          "engineLabel": "Expression Builder",
+          "errorLabel": {
+            "en_US": "Please provide the company number for the company for which you hold a directorship"
+          },
+          "name": {
+            "en_US": "Validate Company Number"
+          },
+          "objectDefinitionExternalReferenceCode": "CO01_CUSTOMER_REGISTRATION",
+          "outputType": "fullValidation",
+          "script": "((jobRole == 'director' AND companyNumber != '') OR jobRole != 'director')"
+        }
+      ],
+      "objectViews": [
+        {
+          "defaultObjectView": true,
+          "name": {
+            "en_US": "Default"
+          },
+          "objectDefinitionExternalReferenceCode": "8aabc67c-4255-3327-acf2-6e79277cf10b",
+          "objectViewColumns": [
+            {
+              "label": {
+                "en_US": "External Reference Code"
+              },
+              "objectFieldName": "externalReferenceCode",
+              "priority": 0
+            },
+            {
+              "label": {
+                "en_US": "Registration Status"
+              },
+              "objectFieldName": "registrationStatus",
+              "priority": 1
+            },
+            {
+              "label": {
+                "en_US": "Company Name"
+              },
+              "objectFieldName": "companyName",
+              "priority": 2
+            },
+            {
+              "label": {
+                "en_US": "Email Address"
+              },
+              "objectFieldName": "emailAddress",
+              "priority": 3
+            },
+            {
+              "label": {
+                "en_US": "Surname"
+              },
+              "objectFieldName": "surname",
+              "priority": 4
+            },
+            {
+              "label": {
+                "en_US": "Forename"
+              },
+              "objectFieldName": "forename",
+              "priority": 5
+            },
+            {
+              "label": {
+                "en_US": "Title / Prefix"
+              },
+              "objectFieldName": "titlePrefix",
+              "priority": 6
+            },
+            {
+              "label": {
+                "en_US": "Other Title"
+              },
+              "objectFieldName": "otherTitle",
+              "priority": 7
+            },
+            {
+              "label": {
+                "en_US": "Phone Number"
+              },
+              "objectFieldName": "phoneNumber",
+              "priority": 8
+            },
+            {
+              "label": {
+                "en_US": "Job Title"
+              },
+              "objectFieldName": "jobTitle",
+              "priority": 9
+            },
+            {
+              "label": {
+                "en_US": "Job Role"
+              },
+              "objectFieldName": "jobRole",
+              "priority": 10
+            },
+            {
+              "label": {
+                "en_US": "Company Number"
+              },
+              "objectFieldName": "companyNumber",
+              "priority": 11
+            },
+            {
+              "label": {
+                "en_US": "ID"
+              },
+              "objectFieldName": "id",
+              "priority": 12
+            },
+            {
+              "label": {
+                "en_US": "Create Date"
+              },
+              "objectFieldName": "createDate",
+              "priority": 13
+            },
+            {
+              "label": {
+                "en_US": "Modified Date"
+              },
+              "objectFieldName": "modifiedDate",
+              "priority": 14
+            }
+          ],
+          "objectViewFilterColumns": [],
+          "objectViewSortColumns": [
+            {
+              "objectFieldName": "emailAddress",
+              "priority": 0,
+              "sortOrder": "asc"
+            }
+          ]
+        }
+      ],
+      "panelCategoryKey": "control_panel.users",
+      "parameterRequired": false,
+      "pluralLabel": {
+        "en_US": "CO01 Customer Registrations"
+      },
+      "portlet": false,
+      "restContextPath": "/o/c/customerregistrations",
+      "scope": "company",
+      "status": {
+        "code": 0,
+        "label": "approved",
+        "label_i18n": "Approved"
+      },
+      "system": false,
+      "titleObjectFieldName": "externalReferenceCode"
+    }
+  ]
+}

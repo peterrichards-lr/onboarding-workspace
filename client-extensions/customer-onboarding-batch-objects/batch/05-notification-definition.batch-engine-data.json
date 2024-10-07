@@ -1,0 +1,112 @@
+{
+  "configuration": {
+    "className": "com.liferay.notification.rest.dto.v1_0.NotificationTemplate",
+    "parameters": {
+      "containsHeaders": "true",
+      "createStrategy": "UPSERT",
+      "onErrorFail": "false",
+      "updateStrategy": "UPDATE"
+    },
+    "taskItemDelegateName": "DEFAULT"
+  },
+  "items": [
+    {
+      "body": {
+        "en_US": "<meta charset=\"UTF-8\"><meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\"><p>Dear&nbsp;[%CO01CUSTOMERREGISTRATION_FORENAME%]&nbsp;[%CO01CUSTOMERREGISTRATION_SURNAME%],</p>\n<p>Unfortunately on this occasion your registration for Liferaybotics has been rejected. Please contact your local Sales Advisor if you require further clarification.</p>\n<p>Kind regards,</p>\n<p>Liferaybotics</p>"
+      },
+      "description": "This template notifies the customer that their registration was rejected",
+      "editorType": "richText",
+      "externalReferenceCode": "CO01_CUSTOMER_REGISTRATION_IS_REJECTED",
+      "name": "CO01 Customer registration is rejected",
+      "name_i18n": {
+        "en_US": "CO01 Customer registration is rejected"
+      },
+      "recipientType": "email",
+      "recipients": [
+        {
+          "from": "noreply@liferaybotics.com",
+          "fromName": {
+            "en_US": "Liferaybotics"
+          },
+          "to": {
+            "en_US": "[%CO01CUSTOMERREGISTRATION_EMAILADDRESS%]"
+          }
+        }
+      ],
+      "subject": {
+        "en_US": "Your customer registration has been unsuccessful"
+      },
+      "type": "email",
+      "typeLabel": "Email"
+    },
+    {
+      "body": {
+        "en_US": "<meta charset=\"UTF-8\"><meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\"><p>Dear [%CO01CUSTOMERREGISTRATION_FORENAME%] [%CO01CUSTOMERREGISTRATION_SURNAME%],</p>\n<p>Thank you for registering to Liferaybotics. We will be in contact in due course.</p>\n<p>Kind regards,</p><p>Liferaybotics</p>"
+      },
+      "description": "",
+      "editorType": "richText",
+      "externalReferenceCode": "CO01_NEW_CUSTOMER_REGISTRATION_RECEIVED_CUSTOMER",
+      "name": "CO01 New customer registration received (Customer)",
+      "name_i18n": {
+        "en_US": "CO01 New customer registration received (Customer)"
+      },
+      "recipientType": "email",
+      "recipients": [
+        {
+          "from": "noreply@liferaybotics.com",
+          "fromName": {
+            "en_US": "Liferaybotics"
+          },
+          "to": {
+            "en_US": "[%CO01CUSTOMERREGISTRATION_EMAILADDRESS%]"
+          }
+        }
+      ],
+      "subject": {
+        "en_US": "We have received your customer registration"
+      },
+      "type": "email",
+      "typeLabel": "Email"
+    },
+    {
+      "description": "This template notifies the reviewer that a new customer registration has been received so they can approve or reject it",
+      "editorType": "richText",
+      "externalReferenceCode": "CO01_NEW_CUSTOMER_REGISTRATION_RECEIVED_REVIEWER",
+      "name": "CO01 New customer registration received (Reviewer)",
+      "name_i18n": {
+        "en_US": "CO01 New customer registration received (Reviewer)"
+      },
+      "recipientType": "role",
+      "recipients": [
+        {
+          "roleName": "CO01 Registration Reviewer"
+        }
+      ],
+      "subject": {
+        "en_US": "A new customer registration has been received from [%CO01CUSTOMERREGISTRATION_FORENAME%] [%CO01CUSTOMERREGISTRATION_SURNAME%] of [%CO01CUSTOMERREGISTRATION_COMPANYNAME%]."
+      },
+      "type": "userNotification",
+      "typeLabel": "User Notification"
+    },
+    {
+      "description": "Sends user notifications to an administrative role whenever a distributor application is submitted.",
+      "editorType": "richText",
+      "externalReferenceCode": "CO01_NOTIFY_ADMINISTRATORS_THAT_THE_CREATE_ENTITIES_PROCESS_HAS_FAILED",
+      "name": "CO01 Notify Administrators that the create entities process has failed",
+      "name_i18n": {
+        "en_US": "CO01 Notify Administrators that the create entities process has failed"
+      },
+      "recipientType": "role",
+      "recipients": [
+        {
+          "roleName": "Administrator"
+        }
+      ],
+      "subject": {
+        "en_US": "The Object Action failed to create the entities for [%CO01CUSTOMERREGISTRATION_FORENAME%] [%CO01CUSTOMERREGISTRATION_SURNAME%] ([%CO01CUSTOMERREGISTRATION_COMPANYNAME%])"
+      },
+      "type": "userNotification",
+      "typeLabel": "User Notification"
+    }
+  ]
+}
