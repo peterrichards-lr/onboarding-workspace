@@ -29,7 +29,7 @@ If you are testing everything locally, you will need to edit the OAuth2 Profiles
 - Make sure the Guest role has the Add Object Entry permission.
 - Make sure the mail server is setup, to receive the email to set the customer's user password.
 - Use the *Test Connectivity* action against the Customer Registration entry to confirm Liferay can communicate with the microservice.
-- Use the *Clean Enties* action against the Customer Registration entry to delete the account and other associated entities, so you can rerun the use case with the same customer information.
+- Use the *Clear Entities* action against the Customer Registration entry to delete the account and other associated entities, so you can rerun the use case with the same customer information.
 
 ### Use case
 
